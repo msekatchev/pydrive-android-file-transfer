@@ -4,7 +4,6 @@ Python scripts for transferring files from an Android phone to Google Drive via 
 `backup.py` uploads all of the files in `local_folder_path` to a folder titled `drive_folder_title` that it creates on the Google Drive home page.
 
 ## Setup
-Requires:
 ### Termux
 - Download on Google Play Store.
 - Setup access to local phone storage by executing `termux-setup-storage`.
