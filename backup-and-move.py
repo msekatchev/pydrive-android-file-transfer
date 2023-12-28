@@ -4,7 +4,9 @@ from pydrive.drive import GoogleDrive
 
 local_folder_path = "/data/data/com.termux/files/home/storage/dcim/Camera" # folder from which to upload
 drive_folder_title = "Camera" # new folder to upload to
-final_folder_title = "../camera-roll" # where photos are moved after being uploaded
+relocate_uploaded_files = False # set to true if you want photos to be moved to a different location after upload
+final_folder_title = "../camera-roll" # where photos are moved after being uploaded (if `relocate_uploaded_files` is True)
+
 
 # Authenticate and get GoogleDrive client
 gauth = GoogleAuth()
@@ -32,4 +34,5 @@ for root, dirs, files in os.walk(local_folder_path):
         # Upload the file
         drive_file.Upload()
 
-        os.rename(local_folder_path+"/"+ file_name, final_folder_title+"/"+file_name) 
+        if relocate_uploaded_files:
+            os.rename(local_folder_path+"/"+ file_name, final_folder_title+"/"+file_name) 
