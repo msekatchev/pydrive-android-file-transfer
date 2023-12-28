@@ -1,8 +1,7 @@
 # pydrive-android-file-transfer
 Python scripts for transferring files from an Android phone to Google Drive via PyDrive through Termux
 
-`backup.py` uploads all of the files in `local_folder_path` to a folder titled `drive_folder_title` that it creates on the Google Drive home page.
-`backup-and-move.py` has the same functionality as `backup.py`, with the addition of moving the uploaded files to a different folder on the phone specified via `final_folder_title`.
+`backup-pydrive.py` uploads all of the files in `local_folder_path` to a folder titled `drive_folder_title` that it creates on the Google Drive home page. It also (optionally, if enabled) moves the uploaded files to a different folder on the phone specified via `final_folder_title`.
 
 ## Setup
 ### Termux
@@ -17,20 +16,13 @@ Python scripts for transferring files from an Android phone to Google Drive via 
 - Obtain a `client_secrets.json` file by following the instructions [here](https://pythonhosted.org/PyDrive/quickstart.html#authentication).
 - Add your Google Account as a test user by following the instructions [here](https://stackoverflow.com/questions/75454425/access-blocked-project-has-not-completed-the-google-verification-process).
 
-## Running `backup.py`
-- Modify lines `5` and `6` of `backup.py` appropriately:
-```python
-local_folder_path  = "../Screenshots" # folder from which to upload
-drive_folder_title = "Screenshots_Backup" # new folder to upload to
-```
-- Place the `backup.py` script and the `client_secrets.json` in a desired location on the phone.
-- Navigate to this location and execute `python3 backup.py`.
-
-## Running `backup-and-move.py`
-- Modify lines `5`-`7` of `backup-and-move.py` appropriately:
+## Running `backup-pydrive.py`
+- Modify lines `5`-`8` of `backup-pydrive.py` appropriately:
 ```python
 local_folder_path = "/data/data/com.termux/files/home/storage/dcim/Camera" # folder from which to upload
 drive_folder_title = "Camera" # new folder to upload to
-final_folder_title = "../camera-roll" # where photos are moved after being uploaded
+relocate_uploaded_files = False # set to true if you want photos to be moved to a different location after upload
+final_folder_title = "../camera-roll" # where photos are moved after being uploaded (if `relocate_uploaded_files` is True)
 ```
-- Follow the same steps as `backup.py` above.
+- Place the `backup-pydrive.py` script and the `client_secrets.json` in a desired location on the phone.
+- Navigate to this location and execute `python3 backup.py`.
