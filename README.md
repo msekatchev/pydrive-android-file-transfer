@@ -2,6 +2,7 @@
 Python scripts for transferring files from an Android phone to Google Drive via PyDrive through Termux
 
 `backup.py` uploads all of the files in `local_folder_path` to a folder titled `drive_folder_title` that it creates on the Google Drive home page.
+`backup-and-move.py` has the same functionality as `backup.py`, with the addition of moving the uploaded files to a different folder on the phone specified via `final_folder_title`.
 
 ## Setup
 ### Termux
@@ -24,3 +25,12 @@ drive_folder_title = "Screenshots_Backup" # new folder to upload to
 ```
 - Place the `backup.py` script and the `client_secrets.json` in a desired location on the phone.
 - Navigate to this location and execute `python3 backup.py`.
+
+## Running `backup-and-move.py`
+- Modify lines `5`-`7` of `backup-and-move.py` appropriately:
+```python
+local_folder_path = "/data/data/com.termux/files/home/storage/dcim/Camera" # folder from which to upload
+drive_folder_title = "Camera" # new folder to upload to
+final_folder_title = "../camera-roll" # where photos are moved after being uploaded
+```
+- Follow the same steps as `backup.py` above.
